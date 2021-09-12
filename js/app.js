@@ -1,4 +1,4 @@
-// load all product ---------------------------------------
+// load all product ----------------------------------------
 const loadProducts = () => {
   // const url = `https://fakestoreapi.com/products`;
   const url = `https://raw.githubusercontent.com/tohirRaihan/test/master/fakeStore.json`;
@@ -39,11 +39,10 @@ const setInnerText = (id, value) => {
 
 // get inner text and parse it to a float ------------------
 const getInputValue = (id) => {
-  const element = document.getElementById(id).innerText;
-  const converted = parseFloat(element);
-  return converted;
+  return parseFloat(document.getElementById(id).innerText);
 };
 
+// add product to cart and calculate all -------------------
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
@@ -53,39 +52,33 @@ const addToCart = (id, price) => {
   setInnerText('total-Products', count);
 };
 
-
-
-// main price update function
+// main price update function ------------------------------
 const updatePrice = (id, value) => {
-  const convertedOldPrice = getInputValue(id);
-  const convertPrice = parseFloat(value);
-  const total = convertedOldPrice + convertPrice;
-  document.getElementById(id).innerText = total.toFixed(2);
+  const oldPrice = getInputValue(id);
+  const newItemPrice = parseFloat(value);
+  const total = oldPrice + newItemPrice;
+  setInnerText(id, total.toFixed(2));
 };
 
-
-
-// update delivery charge and total Tax
+// update delivery charge and total Tax --------------------
 const updateTaxAndCharge = () => {
-  const priceConverted = getInputValue("price");
-  if (priceConverted > 200) {
+  const price = getInputValue("price");
+  if (price > 200) {
     setInnerText("delivery-charge", 30);
-    setInnerText("total-tax", priceConverted * 0.2);
+    setInnerText("total-tax", (price * 0.2).toFixed(2));
   }
-  if (priceConverted > 400) {
+  if (price > 400) {
     setInnerText("delivery-charge", 50);
-    setInnerText("total-tax", priceConverted * 0.3);
+    setInnerText("total-tax", (price * 0.3).toFixed(2));
   }
-  if (priceConverted > 500) {
+  if (price > 500) {
     setInnerText("delivery-charge", 60);
-    setInnerText("total-tax", priceConverted * 0.4);
+    setInnerText("total-tax", (price * 0.4).toFixed(2));
   }
 };
 
 //grandTotal update function
 const updateTotal = () => {
-  const grandTotal =
-    getInputValue("price") + getInputValue("delivery-charge") +
-    getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
+  const grandTotal = getInputValue("price") + getInputValue("delivery-charge") + getInputValue("total-tax");
+  setInnerText('total', grandTotal.toFixed(2));
 };
