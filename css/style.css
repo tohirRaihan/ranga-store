@@ -65,4 +65,8 @@ body {
   #all-products {
     grid-template-columns: repeat(1, 1fr);
   }
+  .cart {
+    position: relative;
+    margin: auto;
+  }
 }
