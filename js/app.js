@@ -20,21 +20,23 @@ const showProducts = (products) => {
       <div class="single-product">
         <div>
           <img class="product-image" src=${image}></img>
+          <h3>${product.title}</h3>
+          <p>Category: ${product.category}</p>
+          <h2>Price: $ ${product.price}</h2>
         </div>
-        <h3>${product.title}</h3>
-        <p>Category: ${product.category}</p>
-        <h2>Price: $ ${product.price}</h2>
-        <div class="rating">
-          <div class="rate">
-            Rate: ${product.rating?.rate} <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-          </div>
-          <div class="count">
-            Count: ${product.rating?.count} <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 
+        <div>
+          <div class="rating">
+            <div class="rate">
+              ${product.rating?.rate} <span class="glyphicon glyphicon-star text-warning" aria-hidden="true"></span>
+            </div>
+            <div class="count">
+              <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span> ${product.rating?.count}
+            </div>
           </div>
+          <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></button>
+          <button id="details-btn" class="btn btn-primary">Details <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
         </div>
-        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-        <button id="details-btn" class="btn btn-danger">Details</button>
       </div>
     `;
     document.getElementById("all-products").appendChild(div);
