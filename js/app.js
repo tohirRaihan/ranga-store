@@ -32,21 +32,28 @@ const showProducts = (products) => {
   }
 };
 
+// set innerText of a field --------------------------------
+const setInnerText = (id, value) => {
+  document.getElementById(id).innerText = value;
+};
+
+// get inner text and parse it to a float ------------------
+const getInputValue = (id) => {
+  const element = document.getElementById(id).innerText;
+  const converted = parseFloat(element);
+  return converted;
+};
+
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
   updatePrice("price", price);
   updateTaxAndCharge();
   updateTotal();
-  // document.getElementById("total-Products").innerText = count;
   setInnerText('total-Products', count);
 };
 
-const getInputValue = (id) => {
-  const element = document.getElementById(id).innerText;
-  const converted = parseFloat(element);
-  return converted;
-};
+
 
 // main price update function
 const updatePrice = (id, value) => {
@@ -56,10 +63,7 @@ const updatePrice = (id, value) => {
   document.getElementById(id).innerText = total.toFixed(2);
 };
 
-// set innerText function
-const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = Math.round(value);
-};
+
 
 // update delivery charge and total Tax
 const updateTaxAndCharge = () => {
