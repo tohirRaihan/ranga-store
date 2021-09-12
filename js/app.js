@@ -1,7 +1,7 @@
 // load all product ----------------------------------------
 const loadProducts = () => {
-  // const url = `https://fakestoreapi.com/products`;
-  const url = `https://raw.githubusercontent.com/tohirRaihan/test/master/fakeStore.json`;
+  const url = `https://fakestoreapi.com/products`;
+  // const url = `https://raw.githubusercontent.com/tohirRaihan/test/master/fakeStore.json`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
@@ -22,7 +22,7 @@ const showProducts = (products) => {
           <img class="product-image" src=${image}></img>
           <h3>${product.title}</h3>
           <p>Category: ${product.category}</p>
-          <h2>Price: $ ${product.price}</h2>
+          <h2>Price: $${product.price}</h2>
         </div>
 
         <div>
